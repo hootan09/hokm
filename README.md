@@ -47,15 +47,25 @@ $ python main.py
 
 ### TODOS:
 [X] Create Cards
+
 [X] Shuffle Cards
+
 [X] Create Player with is_bot flag
+
 [X] Set hand to each player
+
 [X] Set Trump (player selects cards, bots select randomly)  **TODOS: The bot must choose between options wisely.**
+
 [X] Set all 13 cards to player's hands and sort the hands
+
 [ ] Set hands between players clockwise, starting with the ruler (who sets trump)
+
 [ ] Playing cards based on rules for bot
+
 [ ] Lock the cards that players can't draw
+
 [ ] Clarify Team settings
+
 [ ] Add score for each team
 
 # status: Not Ready
