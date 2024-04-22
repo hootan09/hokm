@@ -59,4 +59,4 @@ $ python main.py
 - [ ] Clarify Team settings
 - [ ] Add score for each team
 
-# status: Not Ready
+# Status: Not Ready ❌
