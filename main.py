@@ -85,7 +85,35 @@ class Game():
         ruler = random.randint(1, playerSize)
         self.ruler = int(ruler)
         return int(ruler)
+    
+    def select_trump_for_bot(self, cards):
+        """
+        the logic:
+            1. Count the frequency and score of each suit (Hearts, Diamonds, Clubs, Spades).
+            2. Determine the most common suit.
+            3. Determine the most score suit.
+            4. Return the suits base on logic in the code
+        """
+        # print('Ruler Bot Cards: ', cards)
 
+        # Count the frequency of each suit (Hearts, Diamonds, Clubs, Spades)
+        suit_counts = {'Hearts': 0, 'Diamonds': 0, 'Clubs': 0, 'Spades': 0}
+        # Count the score of each suit (Hearts, Diamonds, Clubs, Spades)
+        suit_score = {'Hearts': 0, 'Diamonds': 0, 'Clubs': 0, 'Spades': 0}
+        
+        for card in cards:
+            suit_counts[card[1]] += 1
+            suit_score[card[1]] += RANK_VALUES[card[0]]
+        
+        # Determine the most common suit
+        most_common_suit = max(suit_counts, key=suit_counts.get)
+        # Determine the most socre suit
+        most_score_suit = max(suit_score, key=suit_score.get)
+
+        if most_common_suit == most_score_suit:
+            return most_common_suit
+        else:
+            return most_score_suit
 
     # def winner(self):
     #     highest_value = max(self.table, key=lambda x: x.value)
@@ -143,7 +171,8 @@ def main():
         rulerPlayerIndex = game.select_trump_ruler(4) - 1 # start from 0
         print(f"The ruler is: player #{rulerPlayerIndex} [is a bot={game.players[rulerPlayerIndex].is_bot}]\n")
         if(game.players[rulerPlayerIndex].is_bot):
-            trump_suit = random.choice(SUITS)
+            trump_suit = game.select_trump_for_bot(game.players[rulerPlayerIndex].hand)
+            # trump_suit = random.choice(SUITS)
         else:
             print(f'Player #{rulerPlayerIndex} hand:\n')
             print(game.players[rulerPlayerIndex].display_hand())
